@@ -10,3 +10,5 @@ INTERACTIVE BIRTHDAY SURPRISE WEBSITE USING HTML, CSS, AND JAVASCRIPT
 <img width="449" height="434" alt="image" src="https://github.com/user-attachments/assets/faefef3f-7a5f-4bc8-888c-1b3a92aa9cb5" />
 
 This project is an interactive birthday-themed web application developed using **HTML, CSS, and JavaScript**. It presents a personalized digital greeting experience through smooth animations, elegant typography, floating particle effects, and visually appealing transitions. The website begins with a warm welcome message and heartfelt birthday wishes, followed by animated sections that gradually reveal special messages, personalized content, and a celebratory profile display. Featuring a modern purple-themed design, responsive layout, and engaging user interactions, the application creates a memorable and immersive experience that transforms a simple birthday greeting into a beautiful digital surprise.
+
+https://birthday-ten-theta.vercel.app/
