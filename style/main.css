@@ -1,16 +1,76 @@
-html {
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink:       #f472b6;
+  --pink-soft:  #fce7f3;
+  --pink-deep:  #db2777;
+  --purple:     #a855f7;
+  --purple-soft:#f3e8ff;
+  --blue:       #60a5fa;
+  --white:      #ffffff;
+  --gray-light: #f8f7ff;
+  --gray-text:  #6b7280;
+  --dark:       #1e1b2e;
+  --shadow:     0 8px 32px rgba(168, 85, 247, 0.15);
+  --radius:     20px;
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #1e1b2e 0%, #2d1b4e 50%, #1a1a3e 100%);
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--white);
 }
 
+/* =============================================
+   PARTICLES
+   ============================================= */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* =============================================
+   AUDIO
+   ============================================= */
 .song {
-  visibility: hidden;
+  display: none;
 }
 
+/* =============================================
+   CONTAINER
+   ============================================= */
 .container {
   height: 100vh;
   margin: 0 auto;
@@ -19,120 +79,191 @@ body {
   text-align: center;
   visibility: hidden;
   width: 100vw;
+  z-index: 1;
 }
 
 .container > div {
   left: 0;
   position: absolute;
   right: 0;
-  top: 20vh;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 clamp(1rem, 5vw, 3rem);
 }
 
-.one {
-  font-size: 4.5rem;
+/* =============================================
+   SECTION 1 — GREETING
+   ============================================= */
+.greeting-label {
+  font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+  letter-spacing: 0.2em;
+  color: var(--pink);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.one h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 9vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.one h1 #name {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .two {
-  font-size: 1.2rem;
-  font-weight: lighter;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.75rem;
 }
 
-.three {
-  font-size: 3rem;
+/* =============================================
+   SECTION 2 — THREE
+   ============================================= */
+.three p {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: 1.2;
+  color: var(--white);
 }
 
-.four .text-box {
-  border: 3px solid #aaa;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 10px;
+.highlight-word {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+/* =============================================
+   SECTION 3 — CHAT BUBBLE
+   ============================================= */
+.four {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-wrapper {
+  width: min(560px, 92vw);
   position: relative;
-  width: 600px;
 }
 
-.text-box p {
-  margin: 0;
+.chat-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 3vw, 1.5rem);
   text-align: left;
+  box-shadow: var(--shadow);
 }
 
-.text-box span {
+.chat-avatar {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--pink-soft), var(--purple-soft));
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-box {
+  flex: 1;
+}
+
+.hbd-chatbox {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--white);
+  line-height: 1.7;
+}
+
+.hbd-chatbox span {
   visibility: hidden;
 }
 
-.text-box .fake-btn {
-  background-color: rgb(21, 161, 237);
-  border-radius: 3px;
-  bottom: -50px;
-  color: #fff;
-  padding: .5rem 1rem;
-  position: absolute;
-  right: 5px;
+.chat-time {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.4rem;
 }
 
+.fake-btn {
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1.8rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: default;
+  float: right;
+  box-shadow: 0 4px 20px rgba(244, 114, 182, 0.4);
+  transition: transform 0.2s;
+}
+
+/* =============================================
+   SECTION 4 — STORY (FIVE)
+   ============================================= */
 .five p {
-  font-size: 2rem;
-  left: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4.5vw, 2.5rem);
   position: absolute;
+  left: 0;
   right: 0;
+  color: var(--white);
+  line-height: 1.4;
+  padding: 0 clamp(1rem, 5vw, 3rem);
 }
 
 .idea-3 strong {
-  border-radius: 3px;
+  border-radius: 8px;
   display: inline-block;
-  padding: 3px 5px;
+  padding: 3px 10px;
+  background: transparent;
+  transition: all 0.3s;
 }
 
-.five .idea-5 {
-  font-size: 4rem;
+.idea-5 {
+  font-size: clamp(2rem, 7vw, 4rem) !important;
 }
 
-.idea-5 span, .idea-6 span, .wish-hbd span {
+.idea-5 span,
+.idea-6 span,
+.wish-hbd span {
   display: inline-block;
 }
 
-.idea-6 span{
-  font-size: 15rem;
+.idea-6 span {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 14rem);
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-
-.six {
-  position: relative;
-  top: 10vh;
-  z-index: 1;
-}
-
-.six img {
-  display: inline-block;
-  height: 350px;
-  max-width: 100%;
-  /* height: auto; */
-}
-
-.six .hat {
-  left: 41.5%;
-  position: absolute;
-  /* transform: scale(0.1); */
-  top: -35%;
-  width: 80px;
-}
-
-.baloons img {
-  display: inline-block;
-  position: absolute;
-}
-
-.baloons img:nth-child(even) {
-  left: -10%;
-}
-
-.baloons img:nth-child(odd) {
-  right: -10%;
-}
-
-.baloons img:nth-child(3n + 0) {
-  left: 30%;
-}
-
+/* =============================================
+   SECTION 5 — BALLOONS (SEVEN)
+   ============================================= */
 .seven, .eight {
   height: 100vh;
   position: fixed;
@@ -140,6 +271,90 @@ body {
   width: 100vw;
 }
 
+.baloons img {
+  display: inline-block;
+  position: absolute;
+  width: clamp(40px, 6vw, 70px);
+}
+
+.baloons img:nth-child(even) { left: -5%; }
+.baloons img:nth-child(odd)  { right: -5%; }
+.baloons img:nth-child(3n)   { left: 30%; }
+
+/* =============================================
+   SECTION 6 — PROFILE CARD (SIX)
+   ============================================= */
+.six {
+  position: relative;
+}
+
+.profile-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(2rem, 6vw, 4rem);
+  box-shadow: var(--shadow), 0 0 60px rgba(244, 114, 182, 0.1);
+  max-width: min(480px, 90vw);
+}
+
+.profile-img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-picture {
+  width: clamp(120px, 28vw, 220px);
+  height: clamp(120px, 28vw, 220px);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  background: linear-gradient(var(--dark), var(--dark)) padding-box,
+              linear-gradient(135deg, var(--pink), var(--purple)) border-box;
+  display: block;
+}
+
+.hat {
+  position: absolute;
+  width: clamp(40px, 8vw, 70px);
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+}
+
+.wish {
+  text-align: center;
+}
+
+.wish-hbd {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+#wishText {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* =============================================
+   SECTION 7 — CONFETTI (EIGHT)
+   ============================================= */
 .eight svg {
   left: 0;
   position: absolute;
@@ -149,144 +364,94 @@ body {
   z-index: -1;
 }
 
-.eight svg:nth-child(1) {
-  fill: #bd6ecf;
-  left: 5vw;
-  top: 7vh;
-}
+.eight svg:nth-child(1) { fill: #bd6ecf; left: 5vw;  top: 7vh;  }
+.eight svg:nth-child(2) { fill: #7dd175; left: 35vw; top: 23vh; }
+.eight svg:nth-child(3) { fill: #349d8b; left: 23vw; top: 33vh; }
+.eight svg:nth-child(4) { fill: #347a9d; left: 57vw; top: 43vh; }
+.eight svg:nth-child(5) { fill: #f472b6; left: 7vw;  top: 68vh; }
+.eight svg:nth-child(6) { fill: #bfaa40; left: 77vw; top: 42vh; }
+.eight svg:nth-child(7) { fill: #e3bae8; left: 83vw; top: 68vh; }
+.eight svg:nth-child(8) { fill: #8762cb; left: 37vw; top: 86vh; }
+.eight svg:nth-child(9) { fill: #9a90da; left: 87vw; top: 94vh; }
 
-.eight svg:nth-child(2) {
-  fill: #7dd175;
-  left: 35vw;
-  top: 23vh;
-}
-
-.eight svg:nth-child(3) {
-  fill: #349d8b;
-  left: 23vw;
-  top: 33vh;
-}
-
-.eight svg:nth-child(4) {
-  fill: #347a9d;
-  left: 57vw;
-  top: 43vh;
-}
-
-.eight svg:nth-child(5) {
-  fill: #c66053;
-  left: 7vw;
-  top: 68vh;
-}
-
-.eight svg:nth-child(6) {
-  fill: #bfaa40;
-  left: 77vw;
-  top: 42vh;
-}
-
-.eight svg:nth-child(7) {
-  fill: #e3bae8;
-  left: 83vw;
-  top: 68vh;
-}
-
-.eight svg:nth-child(8) {
-  fill: #8762cb;
-  left: 37vw;
-  top: 86vh;
-}
-
-.eight svg:nth-child(9) {
-  fill: #9a90da;
-  left: 87vw;
-  top: 94vh;
-}
-
-.wish-hbd {
-  font-size: 3em;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.wish h5 {
-  font-size: 2rem;
-  font-weight: lighter;
-  margin: 10px 0 0;
-}
-
+/* =============================================
+   SECTION 8 — ENDING (NINE)
+   ============================================= */
 .nine p {
-  font-size: 2rem;
-  font-weight: lighter;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
 }
 
 #replay {
   cursor: pointer;
   z-index: 3;
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  transition: opacity 0.2s;
 }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
+#replay:hover {
+  opacity: 0.7;
 }
 
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
+.last-smile {
+  color: var(--pink) !important;
+  -webkit-text-fill-color: var(--pink) !important;
+  font-size: clamp(2rem, 6vw, 3rem) !important;
 }
 
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
+/* =============================================
+   FOOTER
+   ============================================= */
+.made-by-el {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.5rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  z-index: 10;
+  letter-spacing: 0.05em;
 }
 
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
+/* =============================================
+   SWEETALERT CUSTOM
+   ============================================= */
+.swal2-popup {
+  border-radius: 20px !important;
+  font-family: var(--font-body) !important;
 }
 
-@media screen and (max-width: 500px) {
-  .container {
-    width: 90%;
-  }
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .particle { animation: none; }
+}
 
-  .four .text-box {
-    width: 90%;
-  }
-
-  .text-box .fake-btn {
-    bottom: -38px;
-    right: 5px;
-  }
-
-  .idea-5 span {
-    display: block;
-  }
-
-  .idea-6 span {
-    font-size: 10rem;
-  }
-
-  .six .hat {
-    /* top: -20px; */
-    width: 50px;
-  }
-
-  .wish-hbd {
-    font-size: 2.2em;
-  }
-
-  .wish h5 {
+/* =============================================
+   RESPONSIVE — SMALL MOBILE
+   ============================================= */
+@media screen and (max-width: 400px) {
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
     font-size: 1.4rem;
   }
 
-  .nine p {
-    font-size: 1.5rem;
-    font-weight: lighter;
+  .idea-6 span {
+    font-size: 5rem;
+  }
+
+  .profile-picture {
+    width: 110px;
+    height: 110px;
   }
 }
