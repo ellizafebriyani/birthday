@@ -8,44 +8,55 @@
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
   <title>Happy Birthday!!! :)</title>
 
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- My Style -->
   <link rel="stylesheet" href="./style/main.css" />
 </head>
 
 <body>
 
-  <audio class="song" loop autoplay>
+  <audio class="song" loop>
     <source src="./music/hbd.mpeg">
-    Your browser isn't invited for super fun audio time.
   </audio>
 
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+
   <div class="container">
+
+    <!-- Section 1: Greeting -->
     <div class="one">
-      <h1 class="one">
-        Hi
-        <span id="name">Olivia</span>
+      <p class="greeting-label">✦ A little surprise for you ✦</p>
+      <h1>
+        Hi, <span id="name">Olivia</span>
       </h1>
       <p class="two" id="greetingText">I hope this little surprise makes you smile.</p>
     </div>
 
+    <!-- Section 2: Today -->
     <div class="three">
-      <p>Today is your special day!</p>
+      <p>Today is your<br><span class="highlight-word">special day</span></p>
     </div>
 
+    <!-- Section 3: Chat bubble -->
     <div class="four">
-      <div class="text-box">
-        <p class="hbd-chatbox">
-          Happy birthday! I hope your day is filled with love, joy, and beautiful moments.
-        </p>
-        <p class="fake-btn">Send</p>
+      <div class="chat-wrapper">
+        <div class="chat-bubble">
+          <div class="chat-avatar">🎂</div>
+          <div class="text-box">
+            <p class="hbd-chatbox">
+              Happy birthday! I hope your day is filled with love, joy, and beautiful moments. 🎉
+            </p>
+            <span class="chat-time">Today</span>
+          </div>
+        </div>
+        <button class="fake-btn">Send ✈</button>
       </div>
     </div>
 
+    <!-- Section 4: Story -->
     <div class="five">
       <p class="idea-1">At first, I wanted to send a simple birthday message.</p>
       <p class="idea-2">But that felt too ordinary.</p>
@@ -64,17 +75,7 @@
       </p>
     </div>
 
-    <div class="six">
-      <img src="./img/olivia.png" alt="profile" class="profile-picture" id="imagePath" />
-      <img src="img/hat.svg" alt="hat" class="hat" />
-      <div class="wish">
-        <h3 class="wish-hbd">Happy Birthday!</h3>
-        <h5 id="wishText">
-          May god bless you with happiness, good health, and endless beautiful moments.
-        </h5>
-      </div>
-    </div>
-
+    <!-- Section 5: Balloons -->
     <div class="seven">
       <div class="baloons">
         <img src="img/ballon2.svg" alt="" />
@@ -97,22 +98,26 @@
         <img src="img/ballon2.svg" alt="" />
         <img src="img/ballon1.svg" alt="" />
         <img src="img/ballon3.svg" alt="" />
-        <img src="img/ballon3.svg" alt="" />
-        <img src="img/ballon1.svg" alt="" />
-        <img src="img/ballon2.svg" alt="" />
-        <img src="img/ballon3.svg" alt="" />
-        <img src="img/ballon2.svg" alt="" />
-        <img src="img/ballon1.svg" alt="" />
-        <img src="img/ballon3.svg" alt="" />
-        <img src="img/ballon2.svg" alt="" />
-        <img src="img/ballon3.svg" alt="" />
-        <img src="img/ballon1.svg" alt="" />
-        <img src="img/ballon2.svg" alt="" />
-        <img src="img/ballon1.svg" alt="" />
-        <img src="img/ballon3.svg" alt="" />
       </div>
     </div>
 
+    <!-- Section 6: Profile Card -->
+    <div class="six">
+      <div class="profile-card">
+        <div class="profile-img-wrap">
+          <img src="./img/olivia.png" alt="profile" class="profile-picture" id="imagePath" />
+          <img src="img/hat.svg" alt="hat" class="hat" />
+        </div>
+        <div class="wish">
+          <h3 class="wish-hbd">Happy Birthday!</h3>
+          <h5 id="wishText">
+            May God bless you with happiness, good health, and endless beautiful moments. 🌸
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Confetti circles -->
     <div class="eight">
       <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
       <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
@@ -125,24 +130,18 @@
       <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
     </div>
 
+    <!-- Section 8: Ending -->
     <div class="nine">
-      <p>That’s all for now.</p>
-      <p id="replay">Refresh this page if you want to see it again.</p>
+      <p>That's all for now.</p>
+      <p id="replay">↺ Watch it again</p>
       <p class="last-smile">:)</p>
     </div>
   </div>
 
-  <div class="made-by-el">
-    © 2026 Made by El
-  </div>
+  <div class="made-by-el">Made with 💜 by El · 2026</div>
 
-  <!-- Greensock -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-
-  <!-- Sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <script type="application/javascript" src="./script/main.js"></script>
-
 </body>
 </html>
